@@ -1,0 +1,125 @@
+{
+	"textures": [
+		{
+			"image": "sprites_arkanoid.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 165,
+				"h": 45
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "bloque_azul.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 25
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 25
+					}
+				},
+				{
+					"filename": "bloque_rojo.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 25
+					},
+					"frame": {
+						"x": 54,
+						"y": 0,
+						"w": 54,
+						"h": 25
+					}
+				},
+				{
+					"filename": "bloque_verde.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 25
+					},
+					"frame": {
+						"x": 108,
+						"y": 0,
+						"w": 54,
+						"h": 25
+					}
+				},
+				{
+					"filename": "bola.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 15,
+						"h": 15
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 15,
+						"h": 15
+					},
+					"frame": {
+						"x": 0,
+						"y": 25,
+						"w": 15,
+						"h": 15
+					}
+				},
+				{
+					"filename": "plataforma.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 20
+					},
+					"frame": {
+						"x": 15,
+						"y": 25,
+						"w": 150,
+						"h": 20
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:4c78a2b054e2dc3e226ebaf814a47a15:eb6486275159180cfcb2c3435bbe5f63:2c5094d354f0944286a10ce636303e70$"
+	}
+}

@@ -3,7 +3,7 @@
 <head> 
     <meta charset="UTF-8" />
     <title>ARKANOID - BRUE</title>
-    <script src="./phaser.js"></script>
+    <script src="./phaser.min.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -56,11 +56,8 @@
         function preload ()
         {
             this.load.image('fondo', './assets/universe.jpg');
-            this.load.image('BloqueRojo', './assets/bloque_rojo.jpg');
-            this.load.image('BloqueAzul', './assets/bloque_azul.jpg');
-            this.load.image('BloqueVerde', './assets/bloque_verde.jpg');
-            this.load.image('Plataforma', './assets/plataforma.jpg');
-            this.load.image('Bola', './assets/bola.jpg');
+
+            this.load.atlas('sprites', 'assets/json/sprites_arkanoid.png', 'assets/json/sprites_arkanoid.json');
             
             
         }
@@ -79,13 +76,16 @@
 //agrego el fondo
             this.add.image(400, 300, 'fondo'); 
 
+
 //agrego los bloques
-            bloques.create(200, 100, 'BloqueRojo');
-            bloques.create(400, 100, 'BloqueVerde');
-            bloques.create(600, 100, 'BloqueAzul');
+
+            bloques.create(200, 100, 'sprites', 'bloque_rojo.jpg');
+            bloques.create(400, 100, 'sprites', 'bloque_verde.jpg');
+            bloques.create(600, 100, 'sprites', 'bloque_azul.jpg');
+
             
 //agrego la plataforma y le doy físicas
-            plataforma = this.physics.add.image(400, 550, 'Plataforma');
+            plataforma = this.physics.add.sprite(400, 550, 'sprites', 'plataforma.jpg');
             plataforma.setBounce(1);
             plataforma.setCollideWorldBounds(true);
             plataforma.body.immovable = true;
@@ -93,9 +93,9 @@
             
 //agrego y le doy físicas a la bola
 
-            bola = this.physics.add.image(400, 400, 'Bola');
+            bola = this.physics.add.sprite(400, 400, 'sprites', 'bola.jpg');
 
-            bolaMov()
+            bolaMov();
             bola.setBounce(1);
             bola.setCollideWorldBounds(true);
             
@@ -177,9 +177,8 @@
         function bolaMov(){
             bola.body.velocity.y = velocidadY;
             bola.body.velocity.x = velocidadX;
+            
         }
-
-
 
                
     
