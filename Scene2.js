@@ -12,11 +12,13 @@ var fondo = this.add.image(400, 300, 'fondo');
 
 //agrego los bloques
 
-bloques = this.physics.add.staticGroup();
+
+
+/*bloques = this.physics.add.staticGroup();
 
 bloques.create(200, 100, 'sprites', 'bloque_rojo.jpg');
 bloques.create(400, 100, 'sprites', 'bloque_verde.jpg');
-bloques.create(600, 100, 'sprites', 'bloque_azul.jpg');
+bloques.create(600, 100, 'sprites', 'bloque_azul.jpg');*/
 
 fondo.setInteractive();
 fondo.on('pointerdown',() => this.scene.start('escena3'));

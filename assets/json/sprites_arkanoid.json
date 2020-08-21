@@ -4,8 +4,8 @@
 			"image": "sprites_arkanoid.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 165,
-				"h": 45
+				"w": 357,
+				"h": 32
 			},
 			"scale": 1,
 			"frames": [
@@ -14,20 +14,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 54,
-						"h": 25
+						"w": 64,
+						"h": 32
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 54,
-						"h": 25
+						"w": 64,
+						"h": 32
 					},
 					"frame": {
 						"x": 0,
 						"y": 0,
-						"w": 54,
-						"h": 25
+						"w": 64,
+						"h": 32
 					}
 				},
 				{
@@ -35,20 +35,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 54,
-						"h": 25
+						"w": 64,
+						"h": 32
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 54,
-						"h": 25
+						"w": 64,
+						"h": 32
 					},
 					"frame": {
-						"x": 54,
+						"x": 64,
 						"y": 0,
-						"w": 54,
-						"h": 25
+						"w": 64,
+						"h": 32
 					}
 				},
 				{
@@ -56,41 +56,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 54,
-						"h": 25
+						"w": 64,
+						"h": 32
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 54,
-						"h": 25
+						"w": 64,
+						"h": 32
 					},
 					"frame": {
-						"x": 108,
+						"x": 128,
 						"y": 0,
-						"w": 54,
-						"h": 25
-					}
-				},
-				{
-					"filename": "bola.jpg",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 15,
-						"h": 15
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 15,
-						"h": 15
-					},
-					"frame": {
-						"x": 0,
-						"y": 25,
-						"w": 15,
-						"h": 15
+						"w": 64,
+						"h": 32
 					}
 				},
 				{
@@ -108,10 +87,31 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 15,
-						"y": 25,
+						"x": 192,
+						"y": 0,
 						"w": 150,
 						"h": 20
+					}
+				},
+				{
+					"filename": "bola.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 15,
+						"h": 15
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 15,
+						"h": 15
+					},
+					"frame": {
+						"x": 342,
+						"y": 0,
+						"w": 15,
+						"h": 15
 					}
 				}
 			]
@@ -120,6 +120,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:4c78a2b054e2dc3e226ebaf814a47a15:eb6486275159180cfcb2c3435bbe5f63:2c5094d354f0944286a10ce636303e70$"
+		"smartupdate": "$TexturePacker:SmartUpdate:2dd3a6c4d117c2445e3da57720468851:d92816bcebf8214c8cf5071ab529329c:2c5094d354f0944286a10ce636303e70$"
 	}
 }
