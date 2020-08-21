@@ -1,9 +1,17 @@
-﻿<!doctype html> 
+<!doctype html> 
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8" />
-    <title>ARKANOID - BRUE</title>
-    <script src="./phaser.min.js"></script>
+    <title>ARKANOID - 2020 - BRUE</title>
+    
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+
+    <script type="text/javascript" src="Scene1.js"></script>
+    <script type="text/javascript" src="Scene2.js"></script>
+    <script type="text/javascript" src="Scene3.js"></script>
+    
+    <script type="text/javascript" src="game.js"></script>
+
     <style type="text/css">
         body {
             margin: 0;
@@ -11,178 +19,5 @@
     </style>
 </head>
 <body>
-    
-    <script type="text/javascript">
-
-        var config = {
-            type: Phaser.AUTO,
-            width: 800,
-            height: 600,
-            physics: {
-                default: 'arcade',
-                arcade: {
-                    gravity: { y: 0 },
-                    debug: false
-                }
-            },
-            scene: {
-                preload: preload,
-                create: create,
-                update: update
-            }
-        };
-    
-        var bloques; // creo la variable que manejará a los objetos a colisionar
-        var plataforma;
-        var bloques;
-        var bola;
-        var teclas;
-        var vidas = 3;
-        var score = 0;
-        var vidasTexto;
-        var gameoverTexto;
-        var scoreTexto;
-        var velocidadX;
-        var velocidadY;
-        var temporizador = 0;
-        var nivel = 1;
-        var textoNivel;
-        var SpacebarReset;
-        var tiempoEntreNiveles;
-        
-    
-        var game = new Phaser.Game(config); //toma la variable configuración en lugar de hacerlo directamente aquí.
-    
-        function preload ()
-        {
-            this.load.image('fondo', './assets/universe.jpg');
-
-            this.load.atlas('sprites', 'assets/json/sprites_arkanoid.png', 'assets/json/sprites_arkanoid.json');
-            
-            
-        }
-    
-           
-        function create ()
-        {
-            bloques = this.physics.add.staticGroup();   
-            velocidadX = 50;
-            velocidadY = -300;
-            
-            tiempoEntreNiveles = 40;
-            gameOver = false;
-            
-            
-//agrego el fondo
-            this.add.image(400, 300, 'fondo'); 
-
-
-//agrego los bloques
-
-            bloques.create(200, 100, 'sprites', 'bloque_rojo.jpg');
-            bloques.create(400, 100, 'sprites', 'bloque_verde.jpg');
-            bloques.create(600, 100, 'sprites', 'bloque_azul.jpg');
-
-            
-//agrego la plataforma y le doy físicas
-            plataforma = this.physics.add.sprite(400, 550, 'sprites', 'plataforma.jpg');
-            plataforma.setBounce(1);
-            plataforma.setCollideWorldBounds(true);
-            plataforma.body.immovable = true;
-
-            
-//agrego y le doy físicas a la bola
-
-            bola = this.physics.add.sprite(400, 400, 'sprites', 'bola.jpg');
-
-            bolaMov();
-            bola.setBounce(1);
-            bola.setCollideWorldBounds(true);
-            
-//quien interacciona con quien
-            this.physics.add.collider(bola, plataforma);
-            this.physics.add.collider(bola, bloques, destruyeBloque);
-            
-            // entradas
-            teclas = this.input.keyboard.createCursorKeys();
-            //SpacebarReset = this.input.keyboard.addKey(Phaser.input.keyboard.KeyCodes.SPACE);
-
-            //recuento de vidas
-            vidasTexto = this.add.text(16, 16, 'Vidas: 3', { fontSize: '32px', color: 'red' });
-            
-            //recuento de puntos
-            scoreTexto = this.add.text(600, 16, 'Score: 0', { fontSize: '32px', color: 'red' });
-
-            //nivel
-            textoNivel = this.add.text(400, 16, 'Nivel: 1', { fontSize: '32px', color: 'red' });
-
-            
-        }
-    
-        function update ()
-        {
-            if (teclas.left.isDown){
-                plataforma.setVelocityX(-160);
-            }
-            else if (teclas.right.isDown){
-                plataforma.setVelocityX(160);
-            }
-            else{
-                plataforma.setVelocityX(0);
-            }
-
-            if(bola.y > 560 && vidas >= 1){
-                vidas = vidas -1;
-                vidasTexto.setText('Vidas: ' + vidas);
-                bola.body.reset(plataforma.x, plataforma.y - 18);
-
-                //acá si llamo a la función bolaMov() me cuelga el juego -- VER!!
-                bola.body.velocity.y = -300;
-                bola.body.velocity.x = 50;
-            }
-
-            if(vidas < 1){
-                gameoverTexto = this.add.text(200, 300, 'GAME OVER', { fontSize: '64px', color: 'red', fontWeight: 'bold'});
-                bola.body.destroy();
-                tiempoEntreNiveles = 100000000; //tiempo extremadamente alto para que no siga contando cuando gameover
-               
-            }
-
-            // función para aumentar los niveles
-            if(temporizador <= tiempoEntreNiveles){
-                temporizador += 0.1;
-                
-            }
-
-            if(temporizador > tiempoEntreNiveles){
-                nivel += 1;
-                textoNivel.setText('Nivel: ' + nivel);
-                temporizador = 0;
-                bola.body.velocity.y = bola.body.velocity.y*2;  
-
-            }
-           
-                      
-        }
-
-        
-        function destruyeBloque(bola, bloques){
-            bloques.destroy();
-            score += 20;
-            scoreTexto.setText('Score: ' + score);
-            }
-            
-        
-
-        function bolaMov(){
-            bola.body.velocity.y = velocidadY;
-            bola.body.velocity.x = velocidadX;
-            
-        }
-
-               
-    
-    </script>
-    
-    </body>
-    </html>
+</body>
+</html>
