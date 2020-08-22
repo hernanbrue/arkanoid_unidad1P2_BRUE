@@ -15,8 +15,8 @@ class Scene1 extends Phaser.Scene {
       this.load.atlas('sprites', './assets/json/sprites_arkanoid.png', './assets/json/sprites_arkanoid.json');
 
       //CARGA TILES
-      this.load.tilemapTiledJSON('tilemap1', './assets/json/tilemaps.json');
-      this.load.image('tiles', './assets/json/sprites_arkanoid.png');
+      this.load.tilemapTiledJSON('tilemaps', './assets/json/tilemaps.json'); //agrego el tilemap
+      this.load.image('tiles', './assets/json/sprites_arkanoid.png'); //agrego locación en png y le doy una key
             
 
          

@@ -11,10 +11,11 @@ console.log('agrego fondo - escena3')
 var fondo = this.add.image(400, 300, 'fondo');
 
 //agrego los bloques
+var map = this.make.tilemap({ key: 'tilemaps' }); //cargo el tilemap en formato json
+var tileset = map.addTilesetImage('bloquecitos', 'tiles'); //cargo el tileset (del soft Tiles) y le digo su key del archivo png
+var bloquesLayer = map.createStaticLayer('tilemap2', tileset, 0, 0); //creo a partir del archivo tilemap la capa "tilemap1" hecha con el soft Tiled
 
-var map = this.make.tilemap({ key: 'tilemap1' });
-var tileset = map.addTilesetImage('bloquecitos', 'tiles');
-var layer = map.createStaticLayer('tilemap2', tileset, 0, 0);
+bloquesLayer.setCollisionByProperty({collide: true}) // activo la propiedad tipo bool que le di a los bloques en el soft Tiled
 
 fondo.setInteractive();
 fondo.on('pointerdown',() => this.scene.start('escena3'));

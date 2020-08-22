@@ -11,17 +11,12 @@ console.log('agrego fondo - escena2')
 var fondo = this.add.image(400, 300, 'fondo');
 
 //agrego los bloques mediante tilemap
-var map = this.make.tilemap({ key: 'tilemap1' });
-var tileset = map.addTilesetImage('bloquecitos', 'tiles');
-var layer = map.createStaticLayer('tilemap1', tileset, 0, 0);
 
+var map = this.make.tilemap({ key: 'tilemaps' }); //cargo el tilemap en formato json
+var tileset = map.addTilesetImage('bloquecitos', 'tiles'); //cargo el tileset (del soft Tiles) y le digo su key del archivo png
+var bloquesLayer = map.createStaticLayer('tilemap1', tileset, 0, 0); //creo a partir del archivo tilemap la capa "tilemap1" hecha con el soft Tiled
+bloquesLayer.setCollisionByProperty({collide: true}); // activo la propiedad tipo bool que le di a los bloques en el soft Tiled
 
-
-/*bloques = this.physics.add.staticGroup();
-
-bloques.create(200, 100, 'sprites', 'bloque_rojo.jpg');
-bloques.create(400, 100, 'sprites', 'bloque_verde.jpg');
-bloques.create(600, 100, 'sprites', 'bloque_azul.jpg');*/
 
 fondo.setInteractive();
 fondo.on('pointerdown',() => this.scene.start('escena3'));
@@ -48,6 +43,7 @@ bola.setCollideWorldBounds(true);
 //quien interacciona con quien
 this.physics.add.collider(bola, plataforma);
 this.physics.add.collider(bola, bloques);
+
 
 
 }
