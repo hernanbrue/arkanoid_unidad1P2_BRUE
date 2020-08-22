@@ -10,7 +10,10 @@ class Scene2 extends Phaser.Scene {
 console.log('agrego fondo - escena2')
 var fondo = this.add.image(400, 300, 'fondo');
 
-//agrego los bloques
+//agrego los bloques mediante tilemap
+var map = this.make.tilemap({ key: 'tilemap1' });
+var tileset = map.addTilesetImage('bloquecitos', 'tiles');
+var layer = map.createStaticLayer('tilemap1', tileset, 0, 0);
 
 
 
