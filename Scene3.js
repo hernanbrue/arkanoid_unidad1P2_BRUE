@@ -14,7 +14,7 @@ var fondo = this.add.image(400, 300, 'fondo');
 var map = this.make.tilemap({ key: 'tilemaps' }); //cargo el tilemap en formato json
 var tileset = map.addTilesetImage('bloquecitos', 'tiles'); //cargo el tileset (del soft Tiles) y le digo su key del archivo png
 var bloquesLayer = map.createStaticLayer('tilemap2', tileset, 0, 0); //creo a partir del archivo tilemap la capa "tilemap1" hecha con el soft Tiled
-
+map.setCollisionByExclusion([0, -1]);// colisiona con todos los índices menos los espacios vacíos
 bloquesLayer.setCollisionByProperty({collide: true}) // activo la propiedad tipo bool que le di a los bloques en el soft Tiled
 
 fondo.setInteractive();
@@ -31,7 +31,7 @@ plataforma.setCollideWorldBounds(true);
 plataforma.body.immovable = true;
 
 //agrego la bola y le doy físicas y variables del movimiento inicial
-bola = this.physics.add.sprite(400, 400, 'sprites', 'bola.jpg');
+bola = this.physics.add.sprite(400, 525, 'sprites', 'bola.jpg');
 velocidadX = 50;
 velocidadY = -300;
 bola.body.velocity.y = velocidadY;
@@ -41,7 +41,7 @@ bola.setCollideWorldBounds(true);
 
 //quien interacciona con quien
 this.physics.add.collider(bola, plataforma);
-this.physics.add.collider(bola, bloques);
+this.physics.add.collider(bola, bloquesLayer);
 
 
 }
