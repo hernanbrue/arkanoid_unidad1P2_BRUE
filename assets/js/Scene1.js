@@ -9,8 +9,9 @@ class Scene1 extends Phaser.Scene {
       //PERTENECIENTE A LA INTRO
       this.load.image('intro', './assets/intro.jpg');
 
-      //PERTENECIENTES A ESCENA 2
+      //PERTENECIENTES A ESCENAS
       this.load.image('fondo', './assets/universe.jpg');
+      
 
       this.load.atlas('sprites', './assets/json/sprites_arkanoid.png', './assets/json/sprites_arkanoid.json');
 

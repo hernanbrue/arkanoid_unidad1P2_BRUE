@@ -25,20 +25,14 @@ fondo.on('pointerdown',() => this.scene.start('escena3'));
 teclas = this.input.keyboard.createCursorKeys();
 
 
-//agrego plataforma y le doy físicas
-plataforma = this.physics.add.sprite(400, 550, 'sprites', 'plataforma.jpg');
-plataforma.setBounce(1);
-plataforma.setCollideWorldBounds(true);
-plataforma.body.immovable = true;
+//agrego plataforma y le doy físicas (verlo en clase extendida en ./assets/js/plataforma.js)
 
-//agrego la bola y le doy físicas y variables del movimiento inicial
-bola = this.physics.add.sprite(400, 525, 'sprites', 'bola.jpg');
-velocidadX = 50;
-velocidadY = -300;
-bola.body.velocity.y = velocidadY;
-bola.body.velocity.x = velocidadX;
-bola.setBounce(1);
-bola.setCollideWorldBounds(true);
+plataforma = new Plataforma({scene: this, x:400, y:550});
+
+
+//agrego la bola y le doy físicas y variables del movimiento inicial (verlo en clase extendida en ./assets/js/bola.js)
+let bola = new Bola({scene: this, x:400, y:525});
+
 
 //quien interacciona con quien
 this.physics.add.collider(bola, plataforma);
@@ -50,21 +44,25 @@ this.physics.add.collider(bola, bloquesLayer);
 
 update(){
 
+ 
+    
     //movimiento de la plataforma
 
-    if (teclas.left.isDown){
-        plataforma.setVelocityX(-250);
+    if (teclas.left.isDown)
+    {
+        plataforma.moverIzq();
     }
-    else if (teclas.right.isDown){
-        plataforma.setVelocityX(250);
+    else if (teclas.right.isDown)
+    {
+        plataforma.moverDer(); 
     }
-    else{
-        plataforma.setVelocityX(0);
+    else
+    {
+        plataforma.noMover(); 
     }
 
     
 }
-
 
 
 }
