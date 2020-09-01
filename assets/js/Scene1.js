@@ -18,14 +18,13 @@ class Scene1 extends Phaser.Scene {
       //CARGA TILES
       this.load.tilemapTiledJSON('tilemaps', './assets/json/tilemaps.json'); //agrego el tilemap
       this.load.image('tiles', './assets/json/sprites_arkanoid.png'); //agrego locación en png y le doy una key
-            
-
-         
+   
     }
+    
 
     create() {
 
-      var intro = this.add.image(400, 300, 'intro');   
+      var intro = this.add.image(400, 300, 'intro');
       
       
       intro.setInteractive();

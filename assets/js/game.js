@@ -20,4 +20,5 @@ var bloques; // creo la variable que manejará a los objetos a colisionar
 var bola;
 var teclas;
 var plataforma;
+var bloquesLayer;
       
