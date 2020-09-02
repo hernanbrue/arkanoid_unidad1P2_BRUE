@@ -14,7 +14,7 @@ var fondo = this.add.image(400, 300, 'fondo');
 
 var map = this.make.tilemap({ key: 'tilemaps' }); //cargo el tilemap en formato json
 var tileset = map.addTilesetImage('bloquecitos', 'tiles'); //cargo el tileset (del soft Tiles) y le digo su key del archivo png
-var bloquesLayer = map.createDynamicLayer('tilemap1', tileset, 0, 0); //creo a partir del archivo tilemap la capa "tilemap1" hecha con el soft Tiled
+bloquesLayer = map.createDynamicLayer('tilemap1', tileset, 0, 0); //creo a partir del archivo tilemap la capa "tilemap1" hecha con el soft Tiled
 bloquesLayer.setCollisionBetween(1,3);
 bloquesLayer.setTileIndexCallback(1, this.hitBloque, this); // colisión con BLOQUE AZUL
 bloquesLayer.setTileIndexCallback(2, this.hitBloque, this); // colisión con BLOQUE ROJO
@@ -66,7 +66,7 @@ update(){
 
 hitBloque(bola, tile){
     
-    this.bloquesLayer.removeTileAt(tile.x, tile.y);
+    bloquesLayer.removeTileAt(tile.x, tile.y);
 
 }
 
