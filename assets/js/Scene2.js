@@ -16,9 +16,9 @@ var map = this.make.tilemap({ key: 'tilemaps' }); //cargo el tilemap en formato 
 var tileset = map.addTilesetImage('bloquecitos', 'tiles'); //cargo el tileset (del soft Tiles) y le digo su key del archivo png
 bloquesLayer = map.createDynamicLayer('tilemap1', tileset, 0, 0); //creo a partir del archivo tilemap la capa "tilemap1" hecha con el soft Tiled
 bloquesLayer.setCollisionBetween(1,3);
-bloquesLayer.setTileIndexCallback(1, this.hitBloque, this); // colisión con BLOQUE AZUL
-bloquesLayer.setTileIndexCallback(2, this.hitBloque, this); // colisión con BLOQUE ROJO
-bloquesLayer.setTileIndexCallback(3, this.hitBloque, this); // colisión con BLOQUE VERDE
+bloquesLayer.setTileIndexCallback(1, this.hitBloqueA, this); // colisión con BLOQUE AZUL 
+bloquesLayer.setTileIndexCallback(2, this.hitBloqueR, this); // colisión con BLOQUE ROJO
+bloquesLayer.setTileIndexCallback(3, this.hitBloqueV, this); // colisión con BLOQUE VERDE
 
 fondo.setInteractive();
 fondo.on('pointerdown',() => this.scene.start('escena3'));
@@ -39,7 +39,8 @@ bola = new Bola({scene: this, x:400, y:525});
 this.physics.add.collider(bola, plataforma);
 this.physics.add.collider(bola, bloquesLayer);
 
-
+hitA = 2;
+hitR = 3;
 
 }
 
@@ -64,9 +65,36 @@ update(){
     
 }
 
-hitBloque(bola, tile){
-    
-    bloquesLayer.removeTileAt(tile.x, tile.y);
+//el bloque azul se elimina luego de 1 colision (es decir, a la segunda)
+hitBloqueA(bola, tile){
+
+    hitA = hitA - 1;
+
+    if(hitA == 0)
+    {
+        bloquesLayer.removeTileAt(tile.x, tile.y);
+        hitA = 2;
+    }
+
+}
+
+//el bloque rojo se elimina luego de 2 colisiones (es decir, a la tercera)
+hitBloqueR(bola, tile){
+
+    hitR = hitR - 1;
+
+    if(hitR == 0)
+    {
+        bloquesLayer.removeTileAt(tile.x, tile.y);
+        hitR = 3;
+    }
+
+}
+
+//el bloque verde se elimina a la primer colision
+hitBloqueV(bola, tile){
+
+        bloquesLayer.removeTileAt(tile.x, tile.y);
 
 }
 

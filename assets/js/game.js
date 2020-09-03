@@ -21,4 +21,6 @@ var bola;
 var teclas;
 var plataforma;
 var bloquesLayer;
+var hitA
+var hitR; 
       

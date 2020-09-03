@@ -64,12 +64,14 @@ update(){
     
 }
 
+//el bloque azul se elimina luego de una sola colisión
 hitBloque(bola, tile){
     
     
     bloquesLayer.removeTileAt(tile.x, tile.y);
 
 }
+
 
 
 }

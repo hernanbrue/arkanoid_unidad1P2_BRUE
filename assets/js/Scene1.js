@@ -18,6 +18,7 @@ class Scene1 extends Phaser.Scene {
       //CARGA TILES
       this.load.tilemapTiledJSON('tilemaps', './assets/json/tilemaps.json'); //agrego el tilemap
       this.load.image('tiles', './assets/json/sprites_arkanoid.png'); //agrego locación en png y le doy una key
+
    
     }
     
