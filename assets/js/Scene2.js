@@ -42,6 +42,9 @@ this.physics.add.collider(bola, bloquesLayer);
 hitA = 2;
 hitR = 3;
 
+//recuento de vidas
+vidasTexto = this.add.text(16, 550, 'Vidas: 3', { fontSize: '32px', color: 'red' });
+
 }
 
 update(){
@@ -61,6 +64,21 @@ update(){
     else
     {
         plataforma.noMover(); 
+    }
+
+
+    if(bola.y > 560 && vidas >= 1){
+        vidas = vidas -1;
+        vidasTexto.setText('Vidas: ' + vidas);
+        bola.body.reset(plataforma.x, plataforma.y - 18);
+        bola.body.velocity.y = -300;
+        bola.body.velocity.x = Phaser.Math.Between(-50, 50);
+    }
+
+    if(vidas < 1){
+        gameoverTexto = this.add.text(100, 200, 'GAME OVER', { fontSize: '100px', color: 'red', fontWeight: 'bold'});
+        bola.body.destroy();
+       
     }
     
 }

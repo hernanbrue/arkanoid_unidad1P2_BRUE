@@ -23,4 +23,10 @@ var plataforma;
 var bloquesLayer;
 var hitA
 var hitR; 
+var vidas = 3;
+var score = 0;
+var vidasTexto;
+var scoreTexto;
+var gameoverTexto;
+
       
