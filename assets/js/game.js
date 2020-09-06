@@ -31,5 +31,6 @@ var vida2;
 var vida3;
 var scoreTexto;
 var gameoverTexto;
+var bolaVel = 300;
 
       

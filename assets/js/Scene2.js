@@ -61,7 +61,7 @@ scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red'
 
 update(){
 
-    
+            
     //movimiento de la plataforma
 
     if (teclas.left.isDown)
@@ -82,7 +82,7 @@ update(){
         vidas = vidas -1;
         //vidasTexto.setText('Vidas: ' + vidas); //utilizar si se quiere ver las vidas como texto
         bola.body.reset(plataforma.x, plataforma.y - 18);
-        bola.body.velocity.y = -300;
+        bola.body.velocity.y = 300;
         bola.body.velocity.x = Phaser.Math.Between(-50, 50);
     }
 
@@ -108,6 +108,7 @@ hitBloqueA(bola, tile){
         score += 20;
         scoreTexto.setText('Score: ' + score);
         hitA = 2;
+
     }
 
 }
@@ -133,6 +134,8 @@ hitBloqueV(bola, tile){
         bloquesLayer.removeTileAt(tile.x, tile.y);
         score += 10;
         scoreTexto.setText('Score: ' + score);
+        bola.body.velocity.y -= 20; //golpear a un bloque verde incrementa su velocidad en 20 unidades
+        bola.body.velocity.x = -bola.body.velocity.x; //si golpea un bloque verde sale para el otro lado
 
 }
 

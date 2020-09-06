@@ -6,10 +6,11 @@ class Bola extends Phaser.GameObjects.Sprite
     config.scene.add.existing(this);
 
     config.scene.physics.world.enableBody(this);
-    this.body.setVelocityY(-300)
-    this.body.setVelocityX(Phaser.Math.Between(-50, 50));
+    this.body.setVelocityY(300);
+    this.body.setVelocityX(30);
     this.body.setBounce(1);
     this.body.setCollideWorldBounds(true);
+    
   }
 
 
