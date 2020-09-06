@@ -33,5 +33,8 @@ var scoreTexto;
 var gameoverTexto;
 var bolaVel = 300;
 var hit;
+var hitBloque;
+var deadBloque;
+var deadSound;
 
       

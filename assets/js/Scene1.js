@@ -24,6 +24,9 @@ class Scene1 extends Phaser.Scene {
 
       //CARGA SONIDOS
       this.load.audio('choque', './assets/ballhit.mp3');
+      this.load.audio('choqueBloque', './assets/choqueBloque.wav');
+      this.load.audio('deadBloque', './assets/eliminaBloque.wav');
+      this.load.audio('deadBola', './assets/deadB.wav');
 
    
     }

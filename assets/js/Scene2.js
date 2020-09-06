@@ -45,7 +45,7 @@ bola = new Bola({scene: this, x:400, y:525});
 
 
 //quien interacciona con quien
-this.physics.add.collider(bola, plataforma, bolachocaPlataforma);
+this.physics.add.collider(bola, plataforma, bolachocaPlataforma, hitSound);
 this.physics.add.collider(bola, bloquesLayer);
 
 hitA = 2;
@@ -59,6 +59,9 @@ scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red'
 
 //sonidos
 hit = this.sound.add('choque');
+hitBloque = this.sound.add('choqueBloque');
+deadBloque = this.sound.add('deadBloque');
+deadSound = this.sound.add('deadBola');
 
 }
 
@@ -83,6 +86,7 @@ update(){
 
     if(bola.y > 560 && vidas >= 1){
         vidas = vidas -1;
+        deadSound.play();
         //vidasTexto.setText('Vidas: ' + vidas); //utilizar si se quiere ver las vidas como texto
         bola.body.reset(plataforma.x, plataforma.y - 18);
         bola.body.velocity.y = 300;
@@ -105,11 +109,14 @@ update(){
 hitBloqueA(bola, tile){
 
     hitA = hitA - 1;
+    hitBloque.play();
 
     if(hitA == 0)
     {
         bloquesLayer.removeTileAt(tile.x, tile.y);
         score += 20;
+        hitBloque.stop();
+        deadBloque.play();
         scoreTexto.setText('Score: ' + score);
         hitA = 2;
 
@@ -121,11 +128,14 @@ hitBloqueA(bola, tile){
 hitBloqueR(bola, tile){
 
     hitR = hitR - 1;
+    hitBloque.play();
 
     if(hitR == 0)
     {
         bloquesLayer.removeTileAt(tile.x, tile.y);
         score += 30;
+        hitBloque.stop();
+        deadBloque.play();
         scoreTexto.setText('Score: ' + score);
         hitR = 3;
     }
@@ -137,6 +147,7 @@ hitBloqueV(bola, tile){
 
         bloquesLayer.removeTileAt(tile.x, tile.y);
         score += 10;
+        deadBloque.play();
         scoreTexto.setText('Score: ' + score);
         bola.body.velocity.y -= 20; //golpear a un bloque verde incrementa su velocidad en 20 unidades
         dirHorizontalBola(); //si golpea un bloque verde sale para el otro lado
@@ -173,22 +184,24 @@ function bolachocaPlataforma(bola, plataforma) {
         //bola está en el lado izquierdo de la plataforma
         diferencia = plataforma.x - bola.x;
         bola.body.velocity.x = (-2 * diferencia);
-        hit.play();
     }
     else if (bola.x > plataforma.x)
     {
         //bola está en el lado derecho de la plataforma
         diferencia = bola.x - plataforma.x;
         bola.body.velocity.x = (2 * diferencia);
-        hit.play();
     }
     else
     {
         //bola en el centro --> agrega un valor random que evita que salga derecho para arriba
         bola.body.velocity.x = 2 + Math.random(-30, 30);
-        hit.play();
+        
     }
 
+}
+
+function hitSound(){
+    hit.play();
 }
 
 
