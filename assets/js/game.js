@@ -26,6 +26,9 @@ var hitR;
 var vidas = 3;
 var score = 0;
 var vidasTexto;
+var vida1;
+var vida2;
+var vida3;
 var scoreTexto;
 var gameoverTexto;
 

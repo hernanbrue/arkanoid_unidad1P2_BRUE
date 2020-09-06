@@ -10,6 +10,15 @@ class Scene2 extends Phaser.Scene {
 //console.log('agrego fondo - escena2')
 var fondo = this.add.image(400, 300, 'fondo');
 
+//agrego las vidas
+
+vida1 = this.add.image(750, 555, 'corazon');
+vida1.setScale(0.15);
+vida2 = this.add.image(700, 555, 'corazon');
+vida2.setScale(0.15);
+vida3 = this.add.image(650, 555, 'corazon');
+vida3.setScale(0.15);
+
 //agrego los bloques mediante tilemap
 
 var map = this.make.tilemap({ key: 'tilemaps' }); //cargo el tilemap en formato json
@@ -42,14 +51,16 @@ this.physics.add.collider(bola, bloquesLayer);
 hitA = 2;
 hitR = 3;
 
-//recuento de vidas
-vidasTexto = this.add.text(16, 550, 'Vidas: 3', { fontSize: '32px', color: 'red' });
+//recuento de vidas (utilizar si se quiere ver las vidas como texto)
+//vidasTexto = this.add.text(630, 500, 'Vidas: 3', { fontSize: '32px', color: 'red' });
+
+//contador puntaje
+scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red' });
 
 }
 
 update(){
 
- 
     
     //movimiento de la plataforma
 
@@ -69,7 +80,7 @@ update(){
 
     if(bola.y > 560 && vidas >= 1){
         vidas = vidas -1;
-        vidasTexto.setText('Vidas: ' + vidas);
+        //vidasTexto.setText('Vidas: ' + vidas); //utilizar si se quiere ver las vidas como texto
         bola.body.reset(plataforma.x, plataforma.y - 18);
         bola.body.velocity.y = -300;
         bola.body.velocity.x = Phaser.Math.Between(-50, 50);
@@ -80,6 +91,9 @@ update(){
         bola.body.destroy();
        
     }
+
+    //control de la eliminación de los corazones
+    controlVidas();
     
 }
 
@@ -116,7 +130,21 @@ hitBloqueV(bola, tile){
 
 }
 
+}
 
+//control de la eliminación de los corazones
+function controlVidas(){
+    if(vidas == 2){
+        vida1.destroy();
+    }
+
+    if(vidas == 1){
+        vida2.destroy();
+    }
+
+    if(vidas == 0){
+        vida3.destroy();
+    }
 }
 
 

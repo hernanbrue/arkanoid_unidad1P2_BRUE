@@ -19,6 +19,9 @@ class Scene1 extends Phaser.Scene {
       this.load.tilemapTiledJSON('tilemaps', './assets/json/tilemaps.json'); //agrego el tilemap
       this.load.image('tiles', './assets/json/sprites_arkanoid.png'); //agrego locación en png y le doy una key
 
+      //CARGA CORAZÓN
+      this.load.image('corazon', './assets/corazon.png');
+
    
     }
     
@@ -31,6 +34,7 @@ class Scene1 extends Phaser.Scene {
       intro.setInteractive();
       intro.on('pointerdown',() => this.scene.start('escena2'));
       
+
 }
 
 
