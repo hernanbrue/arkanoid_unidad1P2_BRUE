@@ -22,6 +22,9 @@ class Scene1 extends Phaser.Scene {
       //CARGA CORAZÓN
       this.load.image('corazon', './assets/corazon.png');
 
+      //CARGA SONIDOS
+      this.load.audio('choque', './assets/ballhit.mp3');
+
    
     }
     

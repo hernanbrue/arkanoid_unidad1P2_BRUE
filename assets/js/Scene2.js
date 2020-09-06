@@ -57,6 +57,9 @@ hitR = 3;
 //contador puntaje
 scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red' });
 
+//sonidos
+hit = this.sound.add('choque');
+
 }
 
 update(){
@@ -170,17 +173,20 @@ function bolachocaPlataforma(bola, plataforma) {
         //bola está en el lado izquierdo de la plataforma
         diferencia = plataforma.x - bola.x;
         bola.body.velocity.x = (-2 * diferencia);
+        hit.play();
     }
     else if (bola.x > plataforma.x)
     {
         //bola está en el lado derecho de la plataforma
         diferencia = bola.x - plataforma.x;
         bola.body.velocity.x = (2 * diferencia);
+        hit.play();
     }
     else
     {
         //bola en el centro --> agrega un valor random que evita que salga derecho para arriba
         bola.body.velocity.x = 2 + Math.random(-30, 30);
+        hit.play();
     }
 
 }
