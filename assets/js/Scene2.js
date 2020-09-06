@@ -105,6 +105,8 @@ hitBloqueA(bola, tile){
     if(hitA == 0)
     {
         bloquesLayer.removeTileAt(tile.x, tile.y);
+        score += 20;
+        scoreTexto.setText('Score: ' + score);
         hitA = 2;
     }
 
@@ -118,6 +120,8 @@ hitBloqueR(bola, tile){
     if(hitR == 0)
     {
         bloquesLayer.removeTileAt(tile.x, tile.y);
+        score += 30;
+        scoreTexto.setText('Score: ' + score);
         hitR = 3;
     }
 
@@ -127,6 +131,8 @@ hitBloqueR(bola, tile){
 hitBloqueV(bola, tile){
 
         bloquesLayer.removeTileAt(tile.x, tile.y);
+        score += 10;
+        scoreTexto.setText('Score: ' + score);
 
 }
 
