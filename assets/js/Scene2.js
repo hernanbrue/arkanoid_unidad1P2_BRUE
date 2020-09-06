@@ -45,7 +45,7 @@ bola = new Bola({scene: this, x:400, y:525});
 
 
 //quien interacciona con quien
-this.physics.add.collider(bola, plataforma);
+this.physics.add.collider(bola, plataforma, bolachocaPlataforma);
 this.physics.add.collider(bola, bloquesLayer);
 
 hitA = 2;
@@ -61,7 +61,7 @@ scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red'
 
 update(){
 
-            
+               
     //movimiento de la plataforma
 
     if (teclas.left.isDown)
@@ -83,7 +83,8 @@ update(){
         //vidasTexto.setText('Vidas: ' + vidas); //utilizar si se quiere ver las vidas como texto
         bola.body.reset(plataforma.x, plataforma.y - 18);
         bola.body.velocity.y = 300;
-        bola.body.velocity.x = Phaser.Math.Between(-50, 50);
+        bola.body.velocity.x = 70;
+        //bola.body.velocity.x = Phaser.Math.Between(-50, 50);
     }
 
     if(vidas < 1){
@@ -135,7 +136,7 @@ hitBloqueV(bola, tile){
         score += 10;
         scoreTexto.setText('Score: ' + score);
         bola.body.velocity.y -= 20; //golpear a un bloque verde incrementa su velocidad en 20 unidades
-        bola.body.velocity.x = -bola.body.velocity.x; //si golpea un bloque verde sale para el otro lado
+        dirHorizontalBola(); //si golpea un bloque verde sale para el otro lado
 
 }
 
@@ -154,6 +155,34 @@ function controlVidas(){
     if(vidas == 0){
         vida3.destroy();
     }
+}
+
+function dirHorizontalBola(){
+    bola.body.velocity.x = -bola.body.velocity.x;
+}
+
+function bolachocaPlataforma(bola, plataforma) {
+
+    var diferencia = 0;
+
+    if (bola.x < plataforma.x)
+    {
+        //bola está en el lado izquierdo de la plataforma
+        diferencia = plataforma.x - bola.x;
+        bola.body.velocity.x = (-2 * diferencia);
+    }
+    else if (bola.x > plataforma.x)
+    {
+        //bola está en el lado derecho de la plataforma
+        diferencia = bola.x - plataforma.x;
+        bola.body.velocity.x = (2 * diferencia);
+    }
+    else
+    {
+        //bola en el centro --> agrega un valor random que evita que salga derecho para arriba
+        bola.body.velocity.x = 2 + Math.random(-30, 30);
+    }
+
 }
 
 

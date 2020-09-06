@@ -7,8 +7,9 @@ class Bola extends Phaser.GameObjects.Sprite
 
     config.scene.physics.world.enableBody(this);
     this.body.setVelocityY(300);
-    this.body.setVelocityX(30);
+    this.body.setVelocityX(70);
     this.body.setBounce(1);
+    this.body.setFriction(0, 0);
     this.body.setCollideWorldBounds(true);
     
   }
