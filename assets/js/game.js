@@ -36,5 +36,9 @@ var hit;
 var hitBloque;
 var deadBloque;
 var deadSound;
+var temporizador;
+var deltaTime;
+var tiempo = 0;
+var texto;
 
       

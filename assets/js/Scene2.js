@@ -7,11 +7,10 @@ class Scene2 extends Phaser.Scene {
     {
         
 //agrego el fondo
-//console.log('agrego fondo - escena2')
 var fondo = this.add.image(400, 300, 'fondo');
+fondo.setScale(1.3);
 
 //agrego las vidas
-
 vida1 = this.add.image(750, 555, 'corazon');
 vida1.setScale(0.15);
 vida2 = this.add.image(700, 555, 'corazon');
@@ -20,7 +19,6 @@ vida3 = this.add.image(650, 555, 'corazon');
 vida3.setScale(0.15);
 
 //agrego los bloques mediante tilemap
-
 var map = this.make.tilemap({ key: 'tilemaps' }); //cargo el tilemap en formato json
 var tileset = map.addTilesetImage('bloquecitos', 'tiles'); //cargo el tileset (del soft Tiles) y le digo su key del archivo png
 bloquesLayer = map.createDynamicLayer('tilemap1', tileset, 0, 0); //creo a partir del archivo tilemap la capa "tilemap1" hecha con el soft Tiled
@@ -29,25 +27,24 @@ bloquesLayer.setTileIndexCallback(1, this.hitBloqueA, this); // colisión con BL
 bloquesLayer.setTileIndexCallback(2, this.hitBloqueR, this); // colisión con BLOQUE ROJO
 bloquesLayer.setTileIndexCallback(3, this.hitBloqueV, this); // colisión con BLOQUE VERDE
 
+//sistema para pasar entre niveles con el click en el fondo
 fondo.setInteractive();
 fondo.on('pointerdown',() => this.scene.start('escena3'));
 
-// entradas
+//entradas
 teclas = this.input.keyboard.createCursorKeys();
-
 
 //agrego plataforma y le doy físicas (verlo en clase extendida en ./assets/js/plataforma.js)
 plataforma = new Plataforma({scene: this, x:400, y:550});
 
-
 //agrego la bola y le doy físicas y variables del movimiento inicial (verlo en clase extendida en ./assets/js/bola.js)
 bola = new Bola({scene: this, x:400, y:525});
-
 
 //quien interacciona con quien
 this.physics.add.collider(bola, plataforma, bolachocaPlataforma, hitSound);
 this.physics.add.collider(bola, bloquesLayer);
 
+//determino acá la cantidad de golpes de cada bloque (el verde es uno solo) para tenerlo más accesible
 hitA = 2;
 hitR = 3;
 
@@ -56,6 +53,7 @@ hitR = 3;
 
 //contador puntaje
 scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red' });
+//texto = new Textos({scene: this, x:16, y:550});
 
 //sonidos
 hit = this.sound.add('choque');
@@ -63,11 +61,12 @@ hitBloque = this.sound.add('choqueBloque');
 deadBloque = this.sound.add('deadBloque');
 deadSound = this.sound.add('deadBola');
 
+
 }
 
 update(){
 
-               
+                    
     //movimiento de la plataforma
 
     if (teclas.left.isDown)
@@ -87,14 +86,12 @@ update(){
     if(bola.y > 560 && vidas >= 1){
         vidas = vidas -1;
         deadSound.play();
-        //vidasTexto.setText('Vidas: ' + vidas); //utilizar si se quiere ver las vidas como texto
-        bola.body.reset(plataforma.x, plataforma.y - 18);
-        bola.body.velocity.y = 300;
-        bola.body.velocity.x = 70;
-        //bola.body.velocity.x = Phaser.Math.Between(-50, 50);
+        bola.resetBolaPos();
+        bola.resetBolaMov();
+
     }
 
-    if(vidas < 1){
+    else if(vidas < 1){
         gameoverTexto = this.add.text(100, 200, 'GAME OVER', { fontSize: '100px', color: 'red', fontWeight: 'bold'});
         bola.body.destroy();
        
@@ -203,5 +200,8 @@ function bolachocaPlataforma(bola, plataforma) {
 function hitSound(){
     hit.play();
 }
+
+
+
 
 
