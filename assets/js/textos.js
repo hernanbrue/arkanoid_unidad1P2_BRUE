@@ -1,4 +1,4 @@
-class Textos extends Phaser.Text
+class Textos extends Phaser.GameObjects.Text
 {
   constructor(config)
   {
