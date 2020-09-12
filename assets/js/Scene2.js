@@ -49,6 +49,7 @@ hitA = 2;
 hitR = 3;
 
 vidas = 3;
+bolaVel = 300;
 
 //recuento de vidas (utilizar si se quiere ver las vidas como texto)
 //vidasTexto = this.add.text(630, 500, 'Vidas: 3', { fontSize: '32px', color: 'red' });
@@ -95,13 +96,14 @@ update(){
     }
 
     else if(vidas < 1){
-        gameoverTexto = this.add.text(100, 200, 'GAME OVER', { fontSize: '100px', color: 'red', fontWeight: 'bold'});
+        gameoverTexto = this.add.text(100, 200, 'GAME OVER', { fontSize: '100px', color: 'white', fontWeight: 'bold'});
         bola.body.destroy();
        
     }
 
     //control de la eliminación de los corazones
     controlVidas();
+    //bolaVel =- 10;
     
 }
 

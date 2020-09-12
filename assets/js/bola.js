@@ -6,7 +6,7 @@ class Bola extends Phaser.GameObjects.Sprite
     config.scene.add.existing(this);
 
     config.scene.physics.world.enableBody(this);
-    this.body.setVelocityY(300);
+    this.body.setVelocityY(bolaVel);
     this.body.setVelocityX(70);
     this.body.setBounce(1);
     this.body.setFriction(0, 0);
@@ -17,13 +17,11 @@ class Bola extends Phaser.GameObjects.Sprite
 
   resetBolaPos(){
 
-    this.body.reset(plataforma.x, plataforma.y - 18);
-
-    
+    this.body.reset(plataforma.x, plataforma.y - 18);   
   }
 
   resetBolaMov(){
-    this.body.velocity.y = 300;
+    this.body.velocity.y = bolaVel;
     this.body.velocity.x = 70;
   }
 
