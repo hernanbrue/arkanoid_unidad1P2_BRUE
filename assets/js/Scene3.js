@@ -48,12 +48,15 @@ this.physics.add.collider(bola, bloquesLayer);
 hitA = 2;
 hitR = 3;
 
+vidas = 3;
+
 //recuento de vidas (utilizar si se quiere ver las vidas como texto)
 //vidasTexto = this.add.text(630, 500, 'Vidas: 3', { fontSize: '32px', color: 'red' });
 
 //contador puntaje
-scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red' });
-//texto = new Textos({scene: this, x:16, y:550});
+score = 0;
+//scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red' });
+texto = new Textos({scene: this, x:16, y:550});
 
 //sonidos
 hit = this.sound.add('choque');
@@ -111,10 +114,9 @@ hitBloqueA(bola, tile){
     if(hitA == 0)
     {
         bloquesLayer.removeTileAt(tile.x, tile.y);
-        score += 20;
+        texto.hitAzul();
         hitBloque.stop();
         deadBloque.play();
-        scoreTexto.setText('Score: ' + score);
         hitA = 2;
 
     }
@@ -130,10 +132,9 @@ hitBloqueR(bola, tile){
     if(hitR == 0)
     {
         bloquesLayer.removeTileAt(tile.x, tile.y);
-        score += 30;
+        texto.hitRojo();
         hitBloque.stop();
         deadBloque.play();
-        scoreTexto.setText('Score: ' + score);
         hitR = 3;
     }
 
@@ -143,9 +144,8 @@ hitBloqueR(bola, tile){
 hitBloqueV(bola, tile){
 
         bloquesLayer.removeTileAt(tile.x, tile.y);
-        score += 10;
+        texto.hitVerde();
         deadBloque.play();
-        scoreTexto.setText('Score: ' + score);
         bola.body.velocity.y -= 20; //golpear a un bloque verde incrementa su velocidad en 20 unidades
         dirHorizontalBola(); //si golpea un bloque verde sale para el otro lado
 

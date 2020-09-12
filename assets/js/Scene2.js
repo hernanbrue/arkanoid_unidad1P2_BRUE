@@ -48,10 +48,13 @@ this.physics.add.collider(bola, bloquesLayer);
 hitA = 2;
 hitR = 3;
 
+vidas = 3;
+
 //recuento de vidas (utilizar si se quiere ver las vidas como texto)
 //vidasTexto = this.add.text(630, 500, 'Vidas: 3', { fontSize: '32px', color: 'red' });
 
 //contador puntaje
+score = 0;
 //scoreTexto = this.add.text(16, 550, 'Score: 0', { fontSize: '32px', color: 'red' });
 texto = new Textos({scene: this, x:16, y:550});
 
