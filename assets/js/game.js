@@ -16,7 +16,6 @@ var game = new Phaser.Game(config); //toma la variable configuración en lugar d
 
 //VARIABLES
 
-var bloques; // creo la variable que manejará a los objetos a colisionar
 var bola;
 var teclas;
 var plataforma;
